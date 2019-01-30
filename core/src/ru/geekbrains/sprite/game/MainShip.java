@@ -1,7 +1,9 @@
 package ru.geekbrains.sprite.game;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -24,6 +26,8 @@ public class MainShip extends Sprite {
     private BulletPool bulletPool;
 
     private TextureRegion bulletRegion;
+
+    Sound sound = Gdx.audio.newSound(Gdx.files.internal("shoot.mp3"));
 
 
     public MainShip(TextureAtlas atlas, BulletPool bulletPool) {
@@ -113,6 +117,7 @@ public class MainShip extends Sprite {
     private void shoot() {
         Bullet bullet = bulletPool.obtain();
         bullet.set(this, bulletRegion, pos, new Vector2(0, 0.5f), 0.01f, worldBounds, 1);
+        sound.play(1.0f);
     }
 
     @Override
