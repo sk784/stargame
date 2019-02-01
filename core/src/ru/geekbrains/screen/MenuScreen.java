@@ -27,7 +27,7 @@ public class MenuScreen extends Base2DScreen {
     private ButtonExit buttonExit;
     private ButtonPlay buttonPlay;
 
-    Music music = Gdx.audio.newMusic(Gdx.files.internal("background.mp3"));
+
 
     public MenuScreen(Game game) {
         this.game = game;
@@ -45,7 +45,6 @@ public class MenuScreen extends Base2DScreen {
         }
         buttonExit = new ButtonExit(atlas);
         buttonPlay = new ButtonPlay(atlas, game);
-        music.play();
     }
 
     @Override
@@ -104,6 +103,4 @@ public class MenuScreen extends Base2DScreen {
         buttonPlay.touchUp(touch, pointer);
         return super.touchUp(touch, pointer);
     }
-    ///
-
 }
