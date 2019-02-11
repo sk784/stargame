@@ -4,10 +4,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public abstract class SpritesPool<T extends Sprite> {
 
-    protected List<T> activeObjects = new ArrayList<T>();
-    protected List<T> freeObjects = new ArrayList<T>();
+    private List<T> activeObjects = new ArrayList<T>();
+    private List<T> freeObjects = new ArrayList<T>();
 
     protected abstract T newObject();
 
@@ -45,6 +46,11 @@ public abstract class SpritesPool<T extends Sprite> {
                 i--;
             }
         }
+    }
+
+    public void freeAllActiveObjects() {
+        freeObjects.addAll(activeObjects);
+        activeObjects.clear();
     }
 
     public void free(T object) {

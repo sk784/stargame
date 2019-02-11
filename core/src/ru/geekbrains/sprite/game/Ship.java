@@ -13,31 +13,31 @@ public class Ship extends Sprite {
 
     protected Rect worldBounds;
 
-    protected Vector2 v = new Vector2();
+    Vector2 v = new Vector2();
 
-    protected BulletPool bulletPool;
-    protected ExplosionPool explosionPool;
-    protected TextureRegion bulletRegion;
+    BulletPool bulletPool;
+    ExplosionPool explosionPool;
+    TextureRegion bulletRegion;
 
-    protected float reloadInterval;
-    protected float reloadTimer;
+    float reloadInterval;
+    float reloadTimer;
 
     private float damageInterval = 0.1f;
     private float damageTimer = damageInterval;
 
-    protected Sound shootSound;
+    Sound shootSound;
 
-    protected Vector2 bulletV;
-    protected float bulletHeight;
-    protected int damage;
+    Vector2 bulletV;
+    float bulletHeight;
+     int damage;
 
-    public int hp;
+    int hp;
 
-    public Ship() {
+    Ship() {
         super();
     }
 
-    public Ship(TextureRegion region, int rows, int cols, int frames) {
+    Ship(TextureRegion region, int rows, int cols, int frames) {
         super(region, rows, cols, frames);
     }
 
@@ -56,13 +56,13 @@ public class Ship extends Sprite {
         this.worldBounds = worldBounds;
     }
 
-    public void shoot() {
+    void shoot() {
         shootSound.play();
         Bullet bullet = bulletPool.obtain();
         bullet.set(this, bulletRegion, pos, bulletV, bulletHeight, worldBounds, damage);
     }
 
-    public void boom() {
+    void boom() {
         Explosion explosion = explosionPool.obtain();
         explosion.set(getHeight(), pos);
     }
@@ -72,6 +72,7 @@ public class Ship extends Sprite {
         damageTimer = 0f;
         hp -= damage;
         if (hp <= 0) {
+            hp = 0;
             destroy();
         }
     }
@@ -82,5 +83,9 @@ public class Ship extends Sprite {
 
     public int getDamage() {
         return damage;
+    }
+
+    public int getHp() {
+        return hp;
     }
 }

@@ -6,14 +6,12 @@ import com.badlogic.gdx.math.Vector2;
 import ru.geekbrains.base.Sprite;
 import ru.geekbrains.math.Rect;
 
-
 public class Bullet extends Sprite {
 
     private Rect worldBounds;
     private Vector2 v = new Vector2();
     private int damage;
     private Object owner;
-
 
     public Bullet() {
         regions = new TextureRegion[1];

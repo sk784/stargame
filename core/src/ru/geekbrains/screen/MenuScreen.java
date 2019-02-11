@@ -14,6 +14,7 @@ import ru.geekbrains.sprite.Background;
 import ru.geekbrains.sprite.Star;
 import ru.geekbrains.sprite.menu.ButtonExit;
 import ru.geekbrains.sprite.menu.ButtonPlay;
+
 public class MenuScreen extends Base2DScreen {
 
     private Game game;
@@ -25,8 +26,6 @@ public class MenuScreen extends Base2DScreen {
 
     private ButtonExit buttonExit;
     private ButtonPlay buttonPlay;
-
-
 
     public MenuScreen(Game game) {
         this.game = game;
@@ -54,8 +53,8 @@ public class MenuScreen extends Base2DScreen {
     }
 
     public void update(float delta) {
-        for (int i = 0; i < star.length; i++) {
-            star[i].update(delta);
+        for (Star aStar : star) {
+            aStar.update(delta);
         }
     }
 
@@ -64,8 +63,8 @@ public class MenuScreen extends Base2DScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         background.draw(batch);
-        for (int i = 0; i < star.length; i++) {
-            star[i].draw(batch);
+        for (Star aStar : star) {
+            aStar.draw(batch);
         }
         buttonExit.draw(batch);
         buttonPlay.draw(batch);
@@ -75,8 +74,8 @@ public class MenuScreen extends Base2DScreen {
     @Override
     public void resize(Rect worldBounds) {
         background.resize(worldBounds);
-        for (int i = 0; i < star.length; i++) {
-            star[i].resize(worldBounds);
+        for (Star aStar : star) {
+            aStar.resize(worldBounds);
         }
         buttonExit.resize(worldBounds);
         buttonPlay.resize(worldBounds);
